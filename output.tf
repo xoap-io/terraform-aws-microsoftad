@@ -1,31 +1,21 @@
-output "instance-profile-id" {
-  value = "${aws_iam_instance_profile.ec2-ssm-role-profile.id}"
+output "dns_ip_addresses" {
+  value = aws_directory_service_directory.this.dns_ip_addresses
 }
-
-output "dir_dns_ip_addresses" {
-  value = "${aws_directory_service_directory.my_microsoftad.dns_ip_addresses}"
+output "id" {
+  value = aws_directory_service_directory.this.id
 }
-
-output "dir_id" {
-  value = "${aws_directory_service_directory.my_microsoftad.id}"
-}
-
 output "access_url" {
-  value = "${aws_directory_service_directory.my_microsoftad.access_url}"
+  value = aws_directory_service_directory.this.access_url
 }
-
 output "security_group_id" {
-  value = "${aws_directory_service_directory.my_microsoftad.security_group_id}"
+  value = aws_directory_service_directory.this.security_group_id
 }
-
-output "dir_domain_name" {
-  value = "${var.domain_name}"
+output "domain_name" {
+  value = var.domain_name
 }
-
-output "dir_computer_ou" {
-  value = "${var.computer_ou}"
+output "dns_name" {
+  value = aws_directory_service_directory.this.name
 }
-
-output "dir_dns_name" {
-  value = "${aws_directory_service_directory.my_microsoftad.name}"
+output "password" {
+  value = nonsensitive(random_password.this.result)
 }
